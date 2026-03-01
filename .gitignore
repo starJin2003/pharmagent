@@ -1,0 +1,8 @@
+CLAUDE.md
+.env
+__pycache__/
+venv/
+data/processed/
+data/cache/
+data/eval_results.json
+.DS_Store

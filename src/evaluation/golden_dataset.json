@@ -1,0 +1,451 @@
+[
+  {
+    "id": "001",
+    "query": "Can I take ibuprofen and warfarin together?",
+    "category": "interaction_check",
+    "expected_drugs": ["ibuprofen", "warfarin"],
+    "relevant_sections": [
+      {"drug_generic_name": "warfarin", "section_type": "drug_interactions"},
+      {"drug_generic_name": "ibuprofen", "section_type": "warnings"}
+    ],
+    "expected_answer_contains": ["bleeding"],
+    "interaction_exists": true
+  },
+  {
+    "id": "002",
+    "query": "Is it safe to take aspirin with methotrexate?",
+    "category": "interaction_check",
+    "expected_drugs": ["aspirin", "methotrexate"],
+    "relevant_sections": [
+      {"drug_generic_name": "methotrexate", "section_type": "drug_interactions"},
+      {"drug_generic_name": "aspirin", "section_type": "warnings"}
+    ],
+    "expected_answer_contains": ["toxicity"],
+    "interaction_exists": true
+  },
+  {
+    "id": "003",
+    "query": "What happens if I take fluoxetine and tramadol together?",
+    "category": "interaction_check",
+    "expected_drugs": ["fluoxetine", "tramadol"],
+    "relevant_sections": [
+      {"drug_generic_name": "fluoxetine", "section_type": "drug_interactions"},
+      {"drug_generic_name": "tramadol", "section_type": "drug_interactions"}
+    ],
+    "expected_answer_contains": ["serotonin"],
+    "interaction_exists": true
+  },
+  {
+    "id": "004",
+    "query": "Can I take ciprofloxacin with methotrexate?",
+    "category": "interaction_check",
+    "expected_drugs": ["ciprofloxacin", "methotrexate"],
+    "relevant_sections": [
+      {"drug_generic_name": "ciprofloxacin", "section_type": "drug_interactions"},
+      {"drug_generic_name": "methotrexate", "section_type": "drug_interactions"}
+    ],
+    "expected_answer_contains": ["methotrexate"],
+    "interaction_exists": true
+  },
+  {
+    "id": "005",
+    "query": "Is there an interaction between digoxin and amoxicillin?",
+    "category": "interaction_check",
+    "expected_drugs": ["digoxin", "amoxicillin"],
+    "relevant_sections": [
+      {"drug_generic_name": "digoxin", "section_type": "drug_interactions"},
+      {"drug_generic_name": "amoxicillin", "section_type": "drug_interactions"}
+    ],
+    "expected_answer_contains": ["digoxin"],
+    "interaction_exists": true
+  },
+  {
+    "id": "006",
+    "query": "Can I take naproxen and warfarin at the same time?",
+    "category": "interaction_check",
+    "expected_drugs": ["naproxen", "warfarin"],
+    "relevant_sections": [
+      {"drug_generic_name": "warfarin", "section_type": "drug_interactions"},
+      {"drug_generic_name": "naproxen", "section_type": "drug_interactions"}
+    ],
+    "expected_answer_contains": ["bleeding"],
+    "interaction_exists": true
+  },
+  {
+    "id": "007",
+    "query": "Does atorvastatin interact with carbamazepine?",
+    "category": "interaction_check",
+    "expected_drugs": ["atorvastatin", "carbamazepine"],
+    "relevant_sections": [
+      {"drug_generic_name": "atorvastatin", "section_type": "drug_interactions"},
+      {"drug_generic_name": "carbamazepine", "section_type": "drug_interactions"}
+    ],
+    "expected_answer_contains": ["atorvastatin"],
+    "interaction_exists": true
+  },
+  {
+    "id": "008",
+    "query": "Is it dangerous to combine sertraline and tramadol?",
+    "category": "interaction_check",
+    "expected_drugs": ["sertraline", "tramadol"],
+    "relevant_sections": [
+      {"drug_generic_name": "sertraline", "section_type": "drug_interactions"},
+      {"drug_generic_name": "tramadol", "section_type": "drug_interactions"}
+    ],
+    "expected_answer_contains": ["serotonin"],
+    "interaction_exists": true
+  },
+  {
+    "id": "009",
+    "query": "Can clopidogrel be taken with omeprazole?",
+    "category": "interaction_check",
+    "expected_drugs": ["clopidogrel", "omeprazole"],
+    "relevant_sections": [
+      {"drug_generic_name": "clopidogrel", "section_type": "drug_interactions"},
+      {"drug_generic_name": "omeprazole", "section_type": "warnings"}
+    ],
+    "expected_answer_contains": ["clopidogrel"],
+    "interaction_exists": true
+  },
+  {
+    "id": "010",
+    "query": "What about combining lithium and ibuprofen?",
+    "category": "interaction_check",
+    "expected_drugs": ["lithium", "ibuprofen"],
+    "relevant_sections": [
+      {"drug_generic_name": "lithium", "section_type": "drug_interactions"},
+      {"drug_generic_name": "ibuprofen", "section_type": "warnings"}
+    ],
+    "expected_answer_contains": ["lithium"],
+    "interaction_exists": true
+  },
+  {
+    "id": "011",
+    "query": "Is there an interaction between metformin and furosemide?",
+    "category": "interaction_check",
+    "expected_drugs": ["metformin", "furosemide"],
+    "relevant_sections": [
+      {"drug_generic_name": "metformin", "section_type": "drug_interactions"},
+      {"drug_generic_name": "furosemide", "section_type": "drug_interactions"}
+    ],
+    "expected_answer_contains": ["metformin"],
+    "interaction_exists": true
+  },
+  {
+    "id": "012",
+    "query": "Can I take celecoxib with warfarin?",
+    "category": "interaction_check",
+    "expected_drugs": ["celecoxib", "warfarin"],
+    "relevant_sections": [
+      {"drug_generic_name": "celecoxib", "section_type": "drug_interactions"},
+      {"drug_generic_name": "warfarin", "section_type": "drug_interactions"}
+    ],
+    "expected_answer_contains": ["bleeding"],
+    "interaction_exists": true
+  },
+  {
+    "id": "013",
+    "query": "Is it safe to take loratadine and acetaminophen together?",
+    "category": "interaction_check",
+    "expected_drugs": ["loratadine", "acetaminophen"],
+    "relevant_sections": [
+      {"drug_generic_name": "loratadine", "section_type": "warnings"},
+      {"drug_generic_name": "acetaminophen", "section_type": "drug_interactions"}
+    ],
+    "expected_answer_contains": [],
+    "interaction_exists": false
+  },
+  {
+    "id": "014",
+    "query": "Can I take amoxicillin and acetaminophen at the same time?",
+    "category": "interaction_check",
+    "expected_drugs": ["amoxicillin", "acetaminophen"],
+    "relevant_sections": [
+      {"drug_generic_name": "amoxicillin", "section_type": "drug_interactions"},
+      {"drug_generic_name": "acetaminophen", "section_type": "drug_interactions"}
+    ],
+    "expected_answer_contains": [],
+    "interaction_exists": false
+  },
+  {
+    "id": "015",
+    "query": "Any interaction between gabapentin and omeprazole?",
+    "category": "interaction_check",
+    "expected_drugs": ["gabapentin", "omeprazole"],
+    "relevant_sections": [
+      {"drug_generic_name": "gabapentin", "section_type": "drug_interactions"},
+      {"drug_generic_name": "omeprazole", "section_type": "warnings"}
+    ],
+    "expected_answer_contains": [],
+    "interaction_exists": false
+  },
+  {
+    "id": "016",
+    "query": "Is loratadine safe to take with metformin?",
+    "category": "interaction_check",
+    "expected_drugs": ["loratadine", "metformin"],
+    "relevant_sections": [
+      {"drug_generic_name": "loratadine", "section_type": "warnings"},
+      {"drug_generic_name": "metformin", "section_type": "drug_interactions"}
+    ],
+    "expected_answer_contains": [],
+    "interaction_exists": false
+  },
+  {
+    "id": "017",
+    "query": "Can I take amoxicillin and loratadine together?",
+    "category": "interaction_check",
+    "expected_drugs": ["amoxicillin", "loratadine"],
+    "relevant_sections": [
+      {"drug_generic_name": "amoxicillin", "section_type": "drug_interactions"},
+      {"drug_generic_name": "loratadine", "section_type": "warnings"}
+    ],
+    "expected_answer_contains": [],
+    "interaction_exists": false
+  },
+  {
+    "id": "018",
+    "query": "Is gabapentin safe with acetaminophen?",
+    "category": "interaction_check",
+    "expected_drugs": ["gabapentin", "acetaminophen"],
+    "relevant_sections": [
+      {"drug_generic_name": "gabapentin", "section_type": "drug_interactions"},
+      {"drug_generic_name": "acetaminophen", "section_type": "drug_interactions"}
+    ],
+    "expected_answer_contains": [],
+    "interaction_exists": false
+  },
+  {
+    "id": "019",
+    "query": "Can I use albuterol and loratadine at the same time?",
+    "category": "interaction_check",
+    "expected_drugs": ["albuterol", "loratadine"],
+    "relevant_sections": [
+      {"drug_generic_name": "loratadine", "section_type": "warnings"}
+    ],
+    "expected_answer_contains": [],
+    "interaction_exists": false
+  },
+  {
+    "id": "020",
+    "query": "What are the side effects of metformin?",
+    "category": "side_effect",
+    "expected_drugs": ["metformin"],
+    "relevant_sections": [
+      {"drug_generic_name": "metformin", "section_type": "adverse_reactions"}
+    ],
+    "expected_answer_contains": ["lactic acidosis"],
+    "interaction_exists": false
+  },
+  {
+    "id": "021",
+    "query": "What adverse reactions can atorvastatin cause?",
+    "category": "side_effect",
+    "expected_drugs": ["atorvastatin"],
+    "relevant_sections": [
+      {"drug_generic_name": "atorvastatin", "section_type": "adverse_reactions"}
+    ],
+    "expected_answer_contains": ["muscle"],
+    "interaction_exists": false
+  },
+  {
+    "id": "022",
+    "query": "Does sertraline have side effects?",
+    "category": "side_effect",
+    "expected_drugs": ["sertraline"],
+    "relevant_sections": [
+      {"drug_generic_name": "sertraline", "section_type": "adverse_reactions"}
+    ],
+    "expected_answer_contains": ["nausea"],
+    "interaction_exists": false
+  },
+  {
+    "id": "023",
+    "query": "What are the common side effects of lisinopril?",
+    "category": "side_effect",
+    "expected_drugs": ["lisinopril"],
+    "relevant_sections": [
+      {"drug_generic_name": "lisinopril", "section_type": "adverse_reactions"}
+    ],
+    "expected_answer_contains": ["cough"],
+    "interaction_exists": false
+  },
+  {
+    "id": "024",
+    "query": "What reactions can ciprofloxacin cause?",
+    "category": "side_effect",
+    "expected_drugs": ["ciprofloxacin"],
+    "relevant_sections": [
+      {"drug_generic_name": "ciprofloxacin", "section_type": "adverse_reactions"}
+    ],
+    "expected_answer_contains": ["tendon"],
+    "interaction_exists": false
+  },
+  {
+    "id": "025",
+    "query": "Are there side effects from gabapentin?",
+    "category": "side_effect",
+    "expected_drugs": ["gabapentin"],
+    "relevant_sections": [
+      {"drug_generic_name": "gabapentin", "section_type": "adverse_reactions"}
+    ],
+    "expected_answer_contains": ["dizziness"],
+    "interaction_exists": false
+  },
+  {
+    "id": "026",
+    "query": "What are the side effects of prednisone?",
+    "category": "side_effect",
+    "expected_drugs": ["prednisone"],
+    "relevant_sections": [
+      {"drug_generic_name": "prednisone", "section_type": "adverse_reactions"}
+    ],
+    "expected_answer_contains": [],
+    "interaction_exists": false
+  },
+  {
+    "id": "027",
+    "query": "Can naproxen cause stomach problems?",
+    "category": "side_effect",
+    "expected_drugs": ["naproxen"],
+    "relevant_sections": [
+      {"drug_generic_name": "naproxen", "section_type": "adverse_reactions"},
+      {"drug_generic_name": "naproxen", "section_type": "warnings"}
+    ],
+    "expected_answer_contains": ["gastrointestinal"],
+    "interaction_exists": false
+  },
+  {
+    "id": "028",
+    "query": "What adverse effects does carbamazepine have?",
+    "category": "side_effect",
+    "expected_drugs": ["carbamazepine"],
+    "relevant_sections": [
+      {"drug_generic_name": "carbamazepine", "section_type": "adverse_reactions"}
+    ],
+    "expected_answer_contains": ["blood"],
+    "interaction_exists": false
+  },
+  {
+    "id": "029",
+    "query": "Does tramadol have side effects?",
+    "category": "side_effect",
+    "expected_drugs": ["tramadol"],
+    "relevant_sections": [
+      {"drug_generic_name": "tramadol", "section_type": "adverse_reactions"}
+    ],
+    "expected_answer_contains": ["seizure"],
+    "interaction_exists": false
+  },
+  {
+    "id": "030",
+    "query": "Who should not take methotrexate?",
+    "category": "contraindication",
+    "expected_drugs": ["methotrexate"],
+    "relevant_sections": [
+      {"drug_generic_name": "methotrexate", "section_type": "contraindications"}
+    ],
+    "expected_answer_contains": ["pregnant"],
+    "interaction_exists": false
+  },
+  {
+    "id": "031",
+    "query": "When should warfarin not be used?",
+    "category": "contraindication",
+    "expected_drugs": ["warfarin"],
+    "relevant_sections": [
+      {"drug_generic_name": "warfarin", "section_type": "contraindications"}
+    ],
+    "expected_answer_contains": ["bleeding"],
+    "interaction_exists": false
+  },
+  {
+    "id": "032",
+    "query": "Are there contraindications for ciprofloxacin?",
+    "category": "contraindication",
+    "expected_drugs": ["ciprofloxacin"],
+    "relevant_sections": [
+      {"drug_generic_name": "ciprofloxacin", "section_type": "contraindications"}
+    ],
+    "expected_answer_contains": ["hypersensitivity"],
+    "interaction_exists": false
+  },
+  {
+    "id": "033",
+    "query": "Who should avoid taking celecoxib?",
+    "category": "contraindication",
+    "expected_drugs": ["celecoxib"],
+    "relevant_sections": [
+      {"drug_generic_name": "celecoxib", "section_type": "contraindications"}
+    ],
+    "expected_answer_contains": ["allerg"],
+    "interaction_exists": false
+  },
+  {
+    "id": "034",
+    "query": "When is spironolactone contraindicated?",
+    "category": "contraindication",
+    "expected_drugs": ["spironolactone"],
+    "relevant_sections": [
+      {"drug_generic_name": "spironolactone", "section_type": "contraindications"}
+    ],
+    "expected_answer_contains": ["hyperkalemia"],
+    "interaction_exists": false
+  },
+  {
+    "id": "035",
+    "query": "Should anyone avoid taking alprazolam?",
+    "category": "contraindication",
+    "expected_drugs": ["alprazolam"],
+    "relevant_sections": [
+      {"drug_generic_name": "alprazolam", "section_type": "contraindications"}
+    ],
+    "expected_answer_contains": [],
+    "interaction_exists": false
+  },
+  {
+    "id": "036",
+    "query": "What is the best pizza recipe?",
+    "category": "out_of_scope",
+    "expected_drugs": [],
+    "relevant_sections": [],
+    "expected_answer_contains": ["outside", "scope"],
+    "interaction_exists": false
+  },
+  {
+    "id": "037",
+    "query": "What is the weather like today?",
+    "category": "out_of_scope",
+    "expected_drugs": [],
+    "relevant_sections": [],
+    "expected_answer_contains": ["outside", "scope"],
+    "interaction_exists": false
+  },
+  {
+    "id": "038",
+    "query": "Can you write me a Python script?",
+    "category": "out_of_scope",
+    "expected_drugs": [],
+    "relevant_sections": [],
+    "expected_answer_contains": ["outside", "scope"],
+    "interaction_exists": false
+  },
+  {
+    "id": "039",
+    "query": "What is the capital of France?",
+    "category": "out_of_scope",
+    "expected_drugs": [],
+    "relevant_sections": [],
+    "expected_answer_contains": ["outside", "scope"],
+    "interaction_exists": false
+  },
+  {
+    "id": "040",
+    "query": "Tell me about stock market trends",
+    "category": "out_of_scope",
+    "expected_drugs": [],
+    "relevant_sections": [],
+    "expected_answer_contains": ["outside", "scope"],
+    "interaction_exists": false
+  }
+]
