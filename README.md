@@ -1,3 +1,15 @@
+---
+title: PharmAgent
+emoji: 💊
+colorFrom: blue
+colorTo: green
+sdk: gradio
+sdk_version: "5.0.0"
+app_file: app.py
+pinned: false
+license: mit
+---
+
 # PharmAgent
 
 ![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue)
