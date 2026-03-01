@@ -6,39 +6,6 @@
 
 Drug interaction and safety Q&A agent backed by real FDA label data. Ask something like "Can I take ibuprofen with warfarin?" and get an answer with citations pulled from openFDA drug labels — not generated from training data. Built as an agentic RAG pipeline with LangGraph, hybrid retrieval (FAISS + BM25), and input/output safety guards.
 
-## Demo
-
-<!-- Replace with actual screenshot -->
-![Demo Screenshot](assets/demo_screenshot.png)
-
-## Architecture
-
-### Offline — Index Building
-
-```mermaid
-flowchart LR
-    A[openFDA API] --> B[Fetch Top 500\nDrug Labels]
-    B --> C[Parse Sections]
-    C --> D[Section-Aware\nChunking]
-    D --> E[Embed\ntext-embedding-3-small]
-    E --> F[FAISS Index]
-    E --> G[BM25 Index]
-```
-
-### Online — Query Pipeline
-
-```mermaid
-flowchart LR
-    Q[User Query] --> S[Input Safety\nCheck]
-    S -->|ok| R[Drug Name\nResolver\nRxNorm]
-    S -->|blocked| X1[Safety Message]
-    R --> C[Query\nClassifier]
-    C --> H[Hybrid Retrieval\nFAISS + BM25 + RRF]
-    H --> G[Response\nGenerator]
-    G --> O[Output Safety\nCheck]
-    O --> A[Answer with\nCitations]
-```
-
 ## Tech Stack
 
 | Component | Technology |
