@@ -15,6 +15,7 @@ class AgentState(TypedDict):
         retrieved_chunks: List of chunk dicts with keys {text, metadata, score}.
         answer: The final generated answer text.
         citations: List of citation dicts with keys {claim, source_type, drug_name, section_type}.
+        sources_text: Formatted citation list mapping [Source N] to drug/section.
     """
 
     original_query: str
@@ -25,3 +26,4 @@ class AgentState(TypedDict):
     retrieved_chunks: list[dict]
     answer: str
     citations: list[dict]
+    sources_text: str

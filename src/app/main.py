@@ -5,17 +5,17 @@ import gradio as gr
 from src.agents.graph import graph
 
 
-async def _handle_query(query: str) -> str:
+async def _handle_query(query: str) -> tuple[str, str]:
     """Process a user query through the PharmAgent pipeline.
 
     Args:
         query: The user's drug-related question.
 
     Returns:
-        The agent's answer with citations and disclaimer.
+        Tuple of (answer text, sources text).
     """
     if not query or not query.strip():
-        return "Please enter a drug-related question."
+        return "Please enter a drug-related question.", ""
 
     initial_state = {
         "original_query": query.strip(),
@@ -26,20 +26,21 @@ async def _handle_query(query: str) -> str:
         "retrieved_chunks": [],
         "answer": "",
         "citations": [],
+        "sources_text": "",
     }
 
     result = await graph.ainvoke(initial_state)
 
     if result["safety_flag"] != "ok":
-        return result["safety_message"] or "Unable to process this query."
+        return result["safety_message"] or "Unable to process this query.", ""
 
     if not result["resolved_drugs"]:
         return (
             "I couldn't identify any drug names in your question. "
             "Please try rephrasing with specific drug names (brand or generic)."
-        )
+        ), ""
 
-    return result["answer"]
+    return result["answer"], result.get("sources_text", "")
 
 
 _EXAMPLES = [
@@ -70,10 +71,17 @@ with gr.Blocks(title="PharmAgent — FDA Drug Interaction Assistant") as demo:
         interactive=False,
     )
 
+    sources_output = gr.Textbox(
+        label="Sources",
+        lines=5,
+        interactive=False,
+    )
+
     gr.Examples(
         examples=_EXAMPLES,
         inputs=query_input,
     )
 
-    submit_btn.click(fn=_handle_query, inputs=query_input, outputs=answer_output)
-    query_input.submit(fn=_handle_query, inputs=query_input, outputs=answer_output)
+    outputs = [answer_output, sources_output]
+    submit_btn.click(fn=_handle_query, inputs=query_input, outputs=outputs)
+    query_input.submit(fn=_handle_query, inputs=query_input, outputs=outputs)

@@ -335,4 +335,18 @@ async def output_safety_check(state: AgentState) -> AgentState:
         answer += _DISCLAIMER
 
     state["answer"] = answer
+
+    # Build formatted citation list from retrieved chunks
+    chunks = state["retrieved_chunks"]
+    if chunks:
+        lines = []
+        for i, chunk in enumerate(chunks, 1):
+            meta = chunk["metadata"]
+            drug = meta.get("drug_generic_name", "unknown")
+            section = meta.get("section_type", "unknown")
+            lines.append(f"[Source {i}] {drug} | {section} (openFDA)")
+        state["sources_text"] = "\n".join(lines)
+    else:
+        state["sources_text"] = ""
+
     return state
