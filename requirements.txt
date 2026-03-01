@@ -1,5 +1,6 @@
 langchain>=0.3.0
 langchain-openai>=0.2.0
+openai>=1.0.0
 langgraph>=0.2.0
 faiss-cpu>=1.8.0
 gradio==5.12.0

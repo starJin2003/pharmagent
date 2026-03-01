@@ -218,6 +218,7 @@ async def _run_single_eval(entry: dict) -> dict:
         "retrieved_chunks": [],
         "answer": "",
         "citations": [],
+        "sources_text": "",
     }
 
     try:

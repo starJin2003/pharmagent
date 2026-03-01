@@ -8,7 +8,7 @@ import faiss
 import numpy as np
 from openai import AsyncOpenAI
 
-from src.config import EMBEDDING_DIM, EMBEDDING_MODEL, INDEX_DIR, OPENAI_API_KEY
+from src.config import EMBEDDING_MODEL, INDEX_DIR, OPENAI_API_KEY
 
 logger = logging.getLogger(__name__)
 
@@ -108,7 +108,7 @@ async def retrieve(
 
     # FAISS search
     query_vec = await _embed_query(enriched_query)
-    faiss_scores, faiss_ids = _faiss_index.search(query_vec, 20)
+    _, faiss_ids = _faiss_index.search(query_vec, 20)
     faiss_indices = [int(idx) for idx in faiss_ids[0] if idx >= 0]
 
     # BM25 search

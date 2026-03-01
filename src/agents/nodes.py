@@ -27,17 +27,9 @@ _EMERGENCY_KEYWORDS = re.compile(
 )
 
 _NEEDS_DOCTOR_KEYWORDS = re.compile(
-    r"\b(diagnose|diagnosis|what do i have|prescribe|prescription|"
-    r"how much should i take|what dose|dosage for me|"
-    r"should i stop taking|replace my medication|"
+    r"\b(how much should i take|what dose|dosage for me|"
+    r"prescribe|prescription|diagnose me|what do i have|"
     r"am i sick|what is wrong with me)\b",
-    re.IGNORECASE,
-)
-
-_OUT_OF_SCOPE_KEYWORDS = re.compile(
-    r"\b(recipe|weather|stock|crypto|bitcoin|politics|"
-    r"who is the president|capital of|math problem|"
-    r"write me a|translate|code|programming)\b",
     re.IGNORECASE,
 )
 
@@ -80,15 +72,6 @@ async def input_safety_check(state: AgentState) -> AgentState:
             "diagnosis or dosage guidance. Please consult your healthcare "
             "provider or pharmacist for advice tailored to your situation."
             + _DISCLAIMER
-        )
-        return state
-
-    if _OUT_OF_SCOPE_KEYWORDS.search(query):
-        state["safety_flag"] = "out_of_scope"
-        state["safety_message"] = (
-            "I can only answer questions about drug interactions, side effects, "
-            "contraindications, and general drug information based on FDA data. "
-            "Your question appears to be outside this scope."
         )
         return state
 
@@ -140,7 +123,7 @@ async def resolve_drugs(state: AgentState) -> AgentState:
                     "rxcui": result["rxcui"],
                 })
             else:
-                logger.error("RxNorm could not resolve: %s", name)
+                logger.warning("RxNorm could not resolve: %s", name)
         except Exception as exc:
             logger.error("RxNorm resolution error for %s: %s", name, exc)
 
