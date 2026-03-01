@@ -57,7 +57,7 @@ User Query
   v
 [1] input_safety_check
     Regex and keyword matching, no LLM call.
-    Detects emergency keywords, dosage/diagnosis requests, non-drug questions.
+    Detects emergency keywords and dosage/prescription requests.
     If flagged -> return safety message, skip all remaining nodes.
   |
   v
@@ -107,6 +107,21 @@ Evaluated on a 40-query golden dataset across interaction checks, side effects, 
 | Citation Accuracy | **0.96** | >= 0.80 |
 
 Faithfulness is judged by GPT-4o-mini (each answer sentence scored as SUPPORTED / NOT_SUPPORTED against retrieved chunks). Citation accuracy measures the fraction of factual claims with valid `[Source N]` references.
+
+### Iteration Process
+
+| Metric | Run 1 | Run 2 | Run 3 | Run 4 (final) | Target |
+|--------|-------|-------|-------|----------------|--------|
+| Recall@5 | 0.95 | 0.95 | 0.95 | 0.95 | >= 0.75 |
+| MRR | 0.80 | 0.80 | 0.80 | 0.80 | >= 0.50 |
+| Faithfulness | 0.73 | 0.73 | 0.975 | 0.96 | >= 0.85 |
+| Citation Acc | 0.54 | 0.69 | 0.69 | 0.96 | >= 0.80 |
+
+**Run 2.** Added "Every factual sentence MUST end with [Source N]" and a few-shot example to the generator prompt. Citation accuracy 0.54 to 0.69.
+
+**Run 3.** Faithfulness judge was marking "no interaction found" answers as NOT_SUPPORTED because the source chunks never explicitly state "there is no interaction." Fixed the judge prompt to treat absence-of-evidence answers as supported. Faithfulness 0.73 to 0.975.
+
+**Run 4.** Generator was not citing sources in safe combination answers where it described each drug individually. Added a rule: every sentence describing a drug must cite its source, even in "no interaction found" responses. Citation accuracy 0.69 to 0.96.
 
 ## Quick Start
 
@@ -163,7 +178,7 @@ pharmagent/
 
 ## How It Works
 
-Each query runs through a 6-node LangGraph pipeline. The first node checks for safety issues (emergencies, dosage requests, off-topic questions) using regex, no LLM. If the query passes, the second node uses GPT-4o-mini to extract drug names and resolves them to generic names via the RxNorm API. The third node classifies the query type. The fourth node runs hybrid retrieval. The fifth node generates a cited answer. The sixth node appends a disclaimer and formats the sources list. If the safety check or drug resolution fails, the pipeline exits early without calling the LLM for generation.
+Each query runs through a 6-node LangGraph pipeline. The first node checks for safety issues (emergencies, dosage requests) using regex, no LLM. If the query passes, the second node uses GPT-4o-mini to extract drug names and resolves them to generic names via the RxNorm API. The third node classifies the query type. The fourth node runs hybrid retrieval. The fifth node generates a cited answer. The sixth node appends a disclaimer and formats the sources list. If the safety check or drug resolution fails, the pipeline exits early without calling the LLM for generation.
 
 Retrieval uses a hybrid approach: FAISS (semantic similarity via cosine search on OpenAI embeddings) and BM25 (keyword matching). Results from both are merged using Reciprocal Rank Fusion (RRF). Each retriever returns its top 20 candidates, RRF ranks them, and the top 5 go to the generator.
 
